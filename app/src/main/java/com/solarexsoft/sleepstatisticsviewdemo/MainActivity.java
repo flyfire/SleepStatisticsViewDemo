@@ -1,8 +1,14 @@
 package com.solarexsoft.sleepstatisticsviewdemo;
 
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.AbsoluteSizeSpan;
+import android.text.style.StyleSpan;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.solarexsoft.sleepstatisticsview.SleepDurationModel;
 import com.solarexsoft.sleepstatisticsview.SleepStatisticsDrawModel;
@@ -83,5 +89,17 @@ public class MainActivity extends AppCompatActivity {
         durations1.add(duration3);
 
         ssv1.setModel(tmp1);
+
+        TextView tv = findViewById(R.id.tv);
+        test(tv);
+    }
+
+    private void test(TextView tv) {
+        SpannableString spannableString = new SpannableString("0123456789abc");
+        spannableString.setSpan(new AbsoluteSizeSpan(28, true), 0, 3, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(new StyleSpan(Typeface.BOLD), 0, 3, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        spannableString.setSpan(new AbsoluteSizeSpan(28, true), 8, 10, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        tv.setText(spannableString);
     }
 }
